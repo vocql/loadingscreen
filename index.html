@@ -1,1 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA VI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+body{
+  height:100vh;
+  background:#000;
+  overflow:hidden;
+}
+
+/* ===== TOP BAR ===== */
+.topbar{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:64px;
+  background:linear-gradient(90deg,#4c148c,#7b2cbf,#4c148c);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 30px;
+  z-index:10;
+}
+
+.nav{
+  display:flex;
+  gap:42px;
+  color:#fff;
+  font-weight:600;
+  letter-spacing:1px;
+}
+
+.nav span{
+  opacity:.6;
+}
+
+.nav .active{
+  opacity:1;
+  position:relative;
+}
+
+.nav .active::after{
+  content:"";
+  position:absolute;
+  bottom:-10px;
+  left:0;
+  width:100%;
+  height:3px;
+  background:#fff;
+}
+
+/* PC KEYS */
+.key{
+  background:rgba(255,255,255,.2);
+  border:1px solid rgba(255,255,255,.5);
+  padding:6px 12px;
+  border-radius:6px;
+  font-weight:800;
+  color:#fff;
+}
+
+/* ===== HERO BACKGROUND ===== */
+.hero{
+  height:100vh;
+  background:
+    linear-gradient(to top, rgba(0,0,0,.85), rgba(0,0,0,.1)),
+    url("jason.jpg") center/cover no-repeat;
+  position:relative;
+}
+
+/* ===== TEXT ===== */
+.text{
+  position:absolute;
+  bottom:110px;
+  left:60px;
+  max-width:520px;
+  color:#fff;
+}
+
+.text h1{
+  font-size:32px;
+  font-weight:800;
+}
+
+.text h2{
+  margin-top:6px;
+  font-size:15px;
+  color:#ff6cff;
+  letter-spacing:1px;
+}
+
+.text p{
+  margin-top:12px;
+  font-size:14px;
+  line-height:1.6;
+  opacity:.9;
+}
+
+/* ===== CONTROLS ===== */
+.controls{
+  position:absolute;
+  bottom:30px;
+  left:60px;
+  display:flex;
+  gap:25px;
+  color:#fff;
+}
+
+.controls span{
+  background:rgba(255,255,255,.2);
+  border:1px solid rgba(255,255,255,.5);
+  padding:6px 10px;
+  border-radius:6px;
+  font-weight:800;
+  margin-right:6px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP NAV -->
+<div class="topbar">
+  <div class="key">A</div>
+
+  <div class="nav">
+    <span>LIFE</span>
+    <span>GTA+</span>
+    <span class="active">STORY</span>
+    <span>ONLINE</span>
+  </div>
+
+  <div class="key">D</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="text">
+    <h1>GRAND THEFT AUTO VI</h1>
+    <h2>STORY MODE</h2>
+    <p>
+      Enter the sun-soaked metropolis of Vice City and experience the story
+      of Jason and Lucia.
+    </p>
+  </div>
+
+  <div class="controls">
+    <div><span>ENTER</span> Select</div>
+    <div><span>ESC</span> Back</div>
+  </div>
+</div>
+
+</body>
+</html>
 
