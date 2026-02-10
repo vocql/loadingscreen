@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI</title>
+<title>Grand Theft Auto VI</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -21,27 +21,51 @@ body{
   overflow:hidden;
 }
 
-/* ===== TOP BAR ===== */
+/* ===== TOP PURPLE BAR ===== */
 .topbar{
   position:absolute;
   top:0;
   left:0;
   right:0;
-  height:64px;
-  background:linear-gradient(90deg,#4c148c,#7b2cbf,#4c148c);
+  height:72px;
+  background:linear-gradient(90deg,#3b0a6e,#6f2dbd,#3b0a6e);
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  padding:0 30px;
+  justify-content:center;
   z-index:10;
 }
 
+/* PC TAB CONTROLS */
+.topbar .left,
+.topbar .right{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  gap:10px;
+  color:#fff;
+  font-weight:700;
+  font-size:14px;
+}
+
+.topbar .left{ left:28px; }
+.topbar .right{ right:28px; }
+
+.key{
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.45);
+  padding:6px 10px;
+  border-radius:6px;
+}
+
+/* NAV TEXT */
 .nav{
   display:flex;
-  gap:42px;
+  gap:46px;
   color:#fff;
-  font-weight:600;
+  font-weight:700;
   letter-spacing:1px;
+  font-size:15px;
 }
 
 .nav span{
@@ -56,73 +80,65 @@ body{
 .nav .active::after{
   content:"";
   position:absolute;
-  bottom:-10px;
+  bottom:-14px;
   left:0;
   width:100%;
   height:3px;
   background:#fff;
 }
 
-/* PC KEYS */
-.key{
-  background:rgba(255,255,255,.2);
-  border:1px solid rgba(255,255,255,.5);
-  padding:6px 12px;
-  border-radius:6px;
-  font-weight:800;
-  color:#fff;
-}
-
-/* ===== HERO BACKGROUND ===== */
-.hero{
+/* ===== BACKGROUND ===== */
+.screen{
   height:100vh;
   background:
-    linear-gradient(to top, rgba(0,0,0,.85), rgba(0,0,0,.1)),
+    linear-gradient(to top, rgba(0,0,0,.85), rgba(0,0,0,.05)),
     url("jason.jpg") center/cover no-repeat;
   position:relative;
 }
 
-/* ===== TEXT ===== */
-.text{
+/* ===== BOTTOM LEFT TEXT (EXACT POSITION) ===== */
+.info{
   position:absolute;
-  bottom:110px;
-  left:60px;
+  bottom:92px;
+  left:56px;
   max-width:520px;
   color:#fff;
 }
 
-.text h1{
-  font-size:32px;
-  font-weight:800;
+.info h1{
+  font-size:28px;
+  font-weight:900;
 }
 
-.text h2{
+.info h2{
   margin-top:6px;
-  font-size:15px;
-  color:#ff6cff;
+  font-size:14px;
+  font-weight:700;
+  color:#ff69ff;
   letter-spacing:1px;
 }
 
-.text p{
+.info p{
   margin-top:12px;
-  font-size:14px;
+  font-size:13px;
   line-height:1.6;
   opacity:.9;
 }
 
-/* ===== CONTROLS ===== */
-.controls{
+/* ===== FOOTER CONTROLS ===== */
+.footer{
   position:absolute;
-  bottom:30px;
-  left:60px;
+  bottom:26px;
+  left:56px;
   display:flex;
-  gap:25px;
+  gap:24px;
   color:#fff;
+  font-size:13px;
 }
 
-.controls span{
-  background:rgba(255,255,255,.2);
-  border:1px solid rgba(255,255,255,.5);
+.footer span{
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.45);
   padding:6px 10px;
   border-radius:6px;
   font-weight:800;
@@ -133,23 +149,25 @@ body{
 
 <body>
 
-<!-- TOP NAV -->
+<!-- TOP BAR -->
 <div class="topbar">
-  <div class="key">A</div>
-
-  <div class="nav">
-    <span>LIFE</span>
-    <span>GTA+</span>
-    <span class="active">STORY</span>
-    <span>ONLINE</span>
+  <div class="left">
+    <div class="key">A</div>
   </div>
 
-  <div class="key">D</div>
+  <div class="nav">
+    <span>GTA+</span>
+    <span class="active">STORY</span>
+  </div>
+
+  <div class="right">
+    <div class="key">D</div>
+  </div>
 </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="text">
+<!-- SCREEN -->
+<div class="screen">
+  <div class="info">
     <h1>GRAND THEFT AUTO VI</h1>
     <h2>STORY MODE</h2>
     <p>
@@ -158,7 +176,7 @@ body{
     </p>
   </div>
 
-  <div class="controls">
+  <div class="footer">
     <div><span>ENTER</span> Select</div>
     <div><span>ESC</span> Back</div>
   </div>
