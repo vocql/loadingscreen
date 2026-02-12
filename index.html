@@ -1,187 +1,155 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Grand Theft Auto VI</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>John Wick</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Inter',sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-  height:100vh;
-  background:#000;
-  overflow:hidden;
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at center,
+        #8b0000 0%,
+        #5c0000 40%,
+        #2a0000 75%,
+        #120000 100%);
+    color: white;
+    overflow-x: hidden;
 }
 
-/* ===== TOP PURPLE BAR ===== */
-.topbar{
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:72px;
-  background:linear-gradient(90deg,#3b0a6e,#6f2dbd,#3b0a6e);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:10;
+/* Moving Red Glow */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 0, 0, 0.3),
+        transparent
+    );
+    animation: glowMove 6s linear infinite;
+    z-index: 0;
 }
 
-/* PC TAB CONTROLS */
-.topbar .left,
-.topbar .right{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  display:flex;
-  gap:10px;
-  color:#fff;
-  font-weight:700;
-  font-size:14px;
+@keyframes glowMove {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(50%); }
 }
 
-.topbar .left{ left:28px; }
-.topbar .right{ right:28px; }
-
-.key{
-  background:rgba(255,255,255,.18);
-  border:1px solid rgba(255,255,255,.45);
-  padding:6px 10px;
-  border-radius:6px;
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255,0,0,0.3);
+    z-index: 2;
 }
 
-/* NAV TEXT */
-.nav{
-  display:flex;
-  gap:46px;
-  color:#fff;
-  font-weight:700;
-  letter-spacing:1px;
-  font-size:15px;
+nav .logo {
+    font-weight: 900;
+    letter-spacing: 4px;
+    font-size: 1.2rem;
 }
 
-.nav span{
-  opacity:.6;
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
 }
 
-.nav .active{
-  opacity:1;
-  position:relative;
+nav ul li {
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.nav .active::after{
-  content:"";
-  position:absolute;
-  bottom:-14px;
-  left:0;
-  width:100%;
-  height:3px;
-  background:#fff;
+nav ul li:hover {
+    color: #ff2a2a;
 }
 
-/* ===== BACKGROUND ===== */
-.screen{
-  height:100vh;
-  background:
-    linear-gradient(to top, rgba(0,0,0,.85), rgba(0,0,0,.05)),
-    url("jason.jpg") center/cover no-repeat;
-  position:relative;
+/* HERO */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    text-align: center;
 }
 
-/* ===== BOTTOM LEFT TEXT (EXACT POSITION) ===== */
-.info{
-  position:absolute;
-  bottom:92px;
-  left:56px;
-  max-width:520px;
-  color:#fff;
+.hero h1 {
+    font-size: 8vw;
+    font-weight: 900;
+    letter-spacing: 15px;
+    color: black;
+    text-transform: uppercase;
 }
 
-.info h1{
-  font-size:28px;
-  font-weight:900;
+/* COUNTDOWN SECTION */
+.countdown-section {
+    padding: 100px 20px;
+    text-align: center;
+    z-index: 1;
+    position: relative;
 }
 
-.info h2{
-  margin-top:6px;
-  font-size:14px;
-  font-weight:700;
-  color:#ff69ff;
-  letter-spacing:1px;
+.countdown-section h2 {
+    font-size: 3rem;
+    letter-spacing: 6px;
+    margin-bottom: 30px;
 }
 
-.info p{
-  margin-top:12px;
-  font-size:13px;
-  line-height:1.6;
-  opacity:.9;
+.countdown {
+    font-size: 2rem;
+    letter-spacing: 8px;
+    color: #ff4d4d;
+    border: 1px solid rgba(255,0,0,0.4);
+    padding: 20px 40px;
+    display: inline-block;
+    backdrop-filter: blur(6px);
+    background: rgba(0,0,0,0.3);
 }
 
-/* ===== FOOTER CONTROLS ===== */
-.footer{
-  position:absolute;
-  bottom:26px;
-  left:56px;
-  display:flex;
-  gap:24px;
-  color:#fff;
-  font-size:13px;
-}
-
-.footer span{
-  background:rgba(255,255,255,.18);
-  border:1px solid rgba(255,255,255,.45);
-  padding:6px 10px;
-  border-radius:6px;
-  font-weight:800;
-  margin-right:6px;
-}
 </style>
 </head>
-
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <div class="left">
-    <div class="key">A</div>
-  </div>
+<nav>
+    <div class="logo">JOHN WICK</div>
+    <ul>
+        <li>Home</li>
+        <li>Chapters</li>
+        <li>Gallery</li>
+        <li>Contact</li>
+    </ul>
+</nav>
 
-  <div class="nav">
-    <span>GTA+</span>
-    <span class="active">STORY</span>
-  </div>
+<section class="hero">
+    <h1>John Wick</h1>
+</section>
 
-  <div class="right">
-    <div class="key">D</div>
-  </div>
-</div>
-
-<!-- SCREEN -->
-<div class="screen">
-  <div class="info">
-    <h1>GRAND THEFT AUTO VI</h1>
-    <h2>STORY MODE</h2>
-    <p>
-      Enter the sun-soaked metropolis of Vice City and experience the story
-      of Jason and Lucia.
-    </p>
-  </div>
-
-  <div class="footer">
-    <div><span>ENTER</span> Select</div>
-    <div><span>ESC</span> Back</div>
-  </div>
-</div>
+<section class="countdown-section">
+    <h2>Next Chapter</h2>
+    <div class="countdown">TO BE DETERMINED</div>
+</section>
 
 </body>
 </html>
+
 
