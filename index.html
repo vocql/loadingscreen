@@ -15,7 +15,7 @@
 
 body {
     height: 100vh;
-    overflow: hidden; /* NO SCROLL */
+    overflow: hidden;
     background: radial-gradient(circle at center,
         #8b0000 0%,
         #5c0000 40%,
@@ -24,7 +24,7 @@ body {
     color: white;
 }
 
-/* Moving red glow */
+/* Animated red glow */
 body::before {
     content: "";
     position: fixed;
@@ -45,43 +45,85 @@ body::before {
     100% { transform: translateX(50%); }
 }
 
-/* NAVBAR */
-nav {
+/* HAMBURGER PILL */
+.menu-toggle {
     position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 20px 60px;
+    top: 25px;
+    left: 25px;
+    width: 60px;
+    height: 40px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid rgba(255,0,0,0.3);
-    z-index: 2;
-}
-
-nav .logo {
-    font-weight: 900;
-    letter-spacing: 4px;
-    font-size: 1.2rem;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 40px;
-}
-
-nav ul li {
     cursor: pointer;
+    z-index: 3;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,0,0,0.4);
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 2px;
+    background: white;
+    position: relative;
     transition: 0.3s;
 }
 
-nav ul li:hover {
+.menu-toggle span::before,
+.menu-toggle span::after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    background: white;
+    transition: 0.3s;
+}
+
+.menu-toggle span::before {
+    transform: translateY(-8px);
+}
+
+.menu-toggle span::after {
+    transform: translateY(8px);
+}
+
+/* Side Menu */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    padding-top: 120px;
+    gap: 30px;
+    padding-left: 40px;
+    transition: 0.4s ease;
+    z-index: 2;
+}
+
+.side-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    transition: 0.3s;
+}
+
+.side-menu a:hover {
     color: #ff2a2a;
 }
 
-/* HERO CENTERED */
+.side-menu.active {
+    left: 0;
+}
+
+/* HERO */
 .hero {
     position: relative;
     height: 100vh;
@@ -89,51 +131,102 @@ nav ul li:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
     z-index: 1;
+    text-align: center;
 }
 
-/* WHITE TITLE */
+/* BLACK TITLE */
 .hero h1 {
     font-size: 8vw;
     font-weight: 900;
     letter-spacing: 15px;
-    color: white; /* CHANGED TO WHITE */
+    color: black;
     text-transform: uppercase;
 }
 
-/* TO BE DETERMINED MOVED UP */
+/* COUNTDOWN */
 .countdown {
-    margin-top: 30px;
+    margin-top: 25px;
     font-size: 2rem;
     letter-spacing: 8px;
     color: #ff4d4d;
     border: 1px solid rgba(255,0,0,0.4);
-    padding: 20px 40px;
+    padding: 15px 35px;
     backdrop-filter: blur(6px);
     background: rgba(0,0,0,0.3);
+}
+
+/* PLATFORM SECTION */
+.platforms {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.platforms h3 {
+    font-size: 1rem;
+    letter-spacing: 6px;
+    color: #ff4d4d;
+    margin-bottom: 20px;
+}
+
+.platform-list {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    justify-content: center;
+}
+
+.platform-list img {
+    height: 40px;
+    filter: brightness(0) invert(1);
+    transition: 0.3s;
+}
+
+.platform-list img:hover {
+    transform: scale(1.1);
+    filter: brightness(0) invert(1) drop-shadow(0 0 10px red);
 }
 
 </style>
 </head>
 <body>
 
-<nav>
-    <div class="logo">JOHN WICK</div>
-    <ul>
-        <li>Home</li>
-        <li>Chapters</li>
-        <li>Gallery</li>
-        <li>Contact</li>
-    </ul>
-</nav>
+<!-- Hamburger Pill -->
+<div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+</div>
 
+<!-- Slide Menu -->
+<div class="side-menu" id="menu">
+    <a href="#">HOME</a>
+    <a href="#">CHAPTERS</a>
+    <a href="#">GALLERY</a>
+    <a href="#">CONTACT</a>
+</div>
+
+<!-- Hero Section -->
 <section class="hero">
     <h1>John Wick</h1>
-    <div class="countdown">ANNOUNCED</div>
+    <div class="countdown">TO BE DETERMINED</div>
+
+    <div class="platforms">
+        <h3>ANNOUNCED FOR</h3>
+        <div class="platform-list">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/PlayStation_logo.svg" alt="PS5">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Xbox_logo.svg" alt="Xbox">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Windows_logo_-_2012.svg" alt="PC">
+        </div>
+    </div>
 </section>
+
+<script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
+
 
 
