@@ -24,7 +24,7 @@ body {
     color: white;
 }
 
-/* Animated red glow */
+/* Animated red glow sweep */
 body::before {
     content: "";
     position: fixed;
@@ -45,7 +45,7 @@ body::before {
     100% { transform: translateX(50%); }
 }
 
-/* HAMBURGER PILL */
+/* Hamburger Pill */
 .menu-toggle {
     position: fixed;
     top: 25px;
@@ -96,13 +96,13 @@ body::before {
     left: -250px;
     width: 250px;
     height: 100vh;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.92);
     backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
     padding-top: 120px;
-    gap: 30px;
     padding-left: 40px;
+    gap: 30px;
     transition: 0.4s ease;
     z-index: 2;
 }
@@ -123,7 +123,7 @@ body::before {
     left: 0;
 }
 
-/* HERO */
+/* Hero Section */
 .hero {
     position: relative;
     height: 100vh;
@@ -135,7 +135,7 @@ body::before {
     text-align: center;
 }
 
-/* BLACK TITLE */
+/* Black Title */
 .hero h1 {
     font-size: 8vw;
     font-weight: 900;
@@ -144,7 +144,7 @@ body::before {
     text-transform: uppercase;
 }
 
-/* COUNTDOWN */
+/* Countdown */
 .countdown {
     margin-top: 25px;
     font-size: 2rem;
@@ -156,7 +156,7 @@ body::before {
     background: rgba(0,0,0,0.3);
 }
 
-/* PLATFORM SECTION */
+/* Platforms */
 .platforms {
     margin-top: 40px;
     text-align: center;
@@ -172,17 +172,28 @@ body::before {
 .platform-list {
     display: flex;
     gap: 60px;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.platform-list img {
-    height: 40px;
+/* Logo Boxes for Perfect Alignment */
+.logo-box {
+    width: 90px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-box img {
+    max-height: 40px;
+    max-width: 100%;
+    object-fit: contain;
     filter: brightness(0) invert(1);
     transition: 0.3s;
 }
 
-.platform-list img:hover {
+.logo-box img:hover {
     transform: scale(1.1);
     filter: brightness(0) invert(1) drop-shadow(0 0 10px red);
 }
@@ -204,7 +215,7 @@ body::before {
     <a href="#">CONTACT</a>
 </div>
 
-<!-- Hero Section -->
+<!-- Hero -->
 <section class="hero">
     <h1>John Wick</h1>
     <div class="countdown">TO BE DETERMINED</div>
@@ -212,9 +223,15 @@ body::before {
     <div class="platforms">
         <h3>ANNOUNCED FOR</h3>
         <div class="platform-list">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/PlayStation_logo.svg" alt="PS5">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Xbox_logo.svg" alt="Xbox">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Windows_logo_-_2012.svg" alt="PC">
+            <div class="logo-box">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/PlayStation_logo.svg" alt="PS5">
+            </div>
+            <div class="logo-box">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Xbox_logo.svg" alt="Xbox">
+            </div>
+            <div class="logo-box">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Windows_logo_-_2012.svg" alt="PC">
+            </div>
         </div>
     </div>
 </section>
@@ -227,6 +244,5 @@ function toggleMenu() {
 
 </body>
 </html>
-
 
 
