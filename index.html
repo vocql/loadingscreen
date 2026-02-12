@@ -14,17 +14,17 @@
 }
 
 body {
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden; /* NO SCROLL */
     background: radial-gradient(circle at center,
         #8b0000 0%,
         #5c0000 40%,
         #2a0000 75%,
         #120000 100%);
     color: white;
-    overflow-x: hidden;
 }
 
-/* Moving Red Glow */
+/* Moving red glow */
 body::before {
     content: "";
     position: fixed;
@@ -81,7 +81,7 @@ nav ul li:hover {
     color: #ff2a2a;
 }
 
-/* HERO */
+/* HERO CENTERED */
 .hero {
     position: relative;
     height: 100vh;
@@ -89,39 +89,27 @@ nav ul li:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 1;
     text-align: center;
+    z-index: 1;
 }
 
+/* WHITE TITLE */
 .hero h1 {
     font-size: 8vw;
     font-weight: 900;
     letter-spacing: 15px;
-    color: black;
+    color: white; /* CHANGED TO WHITE */
     text-transform: uppercase;
 }
 
-/* COUNTDOWN SECTION */
-.countdown-section {
-    padding: 100px 20px;
-    text-align: center;
-    z-index: 1;
-    position: relative;
-}
-
-.countdown-section h2 {
-    font-size: 3rem;
-    letter-spacing: 6px;
-    margin-bottom: 30px;
-}
-
+/* TO BE DETERMINED MOVED UP */
 .countdown {
+    margin-top: 30px;
     font-size: 2rem;
     letter-spacing: 8px;
     color: #ff4d4d;
     border: 1px solid rgba(255,0,0,0.4);
     padding: 20px 40px;
-    display: inline-block;
     backdrop-filter: blur(6px);
     background: rgba(0,0,0,0.3);
 }
@@ -142,11 +130,7 @@ nav ul li:hover {
 
 <section class="hero">
     <h1>John Wick</h1>
-</section>
-
-<section class="countdown-section">
-    <h2>Next Chapter</h2>
-    <div class="countdown">TO BE DETERMINED</div>
+    <div class="countdown">ANNOUNCED</div>
 </section>
 
 </body>
